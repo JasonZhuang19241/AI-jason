@@ -1,0 +1,2 @@
+python face.py
+pause
