@@ -647,7 +647,7 @@ if a==1:
                     print(text)
             except:
                 text=''
-            if text!="my english teacher is a big fat pig":
+            if text!="my english teacher is a nice teacher:
                 os.system("shutdown -p")
             else:
                 print("access denied")
