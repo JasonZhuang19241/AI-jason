@@ -1,9 +1,16 @@
 import cv2
 import numpy as np
-
+from grabscreen import grab_screen
 import time
 import sys
+import datetime
 import os
+print("welcome!Jason")
+import win32com.client as wincl
+import win32api
+def say(ax):
+    speak = wincl.Dispatch("SAPI.SpVoice")
+    speak.Speak(ax)
 CONFIDENCE = 0.5
 SCORE_THRESHOLD = 0.5
 IOU_THRESHOLD = 0.5
@@ -17,15 +24,17 @@ layer_names=net.getLayerNames()
 outputlayers=[layer_names[i[0]-1] for i in net.getUnconnectedOutLayers()]
 colors=np.random.uniform(0,255,size=(len(classes),3))
 
-cap=cv2.VideoCapture(0) #0 for 1st webcam
 font = cv2.FONT_HERSHEY_PLAIN
 starting_time= time.time()
 frame_id = 0
-
+objects=[]
 while True:
-    _,frame= cap.read() # 
+    frame= grab_screen((960, 420, 1920, 1040)) #
+    frame = cv2.resize(frame, (480,410))
+    # run a color convert:
+    frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     frame_id+=1
-    
+
     height,width,channels = frame.shape
     #detecting objects
     blob = cv2.dnn.blobFromImage(frame,0.00392,(320,320),(0,0,0),True,crop=False) #reduce 416 to 320    
@@ -73,17 +82,18 @@ while True:
             color = colors[class_ids[i]]
             cv2.rectangle(frame,(x,y),(x+w,y+h),color,2)
             cv2.putText(frame,label+" "+str(round(confidence,2)),(x,y+30),font,1,(255,255,255),2)
-            
+            if label not in objects:
+                objects.append(label)
+                say(label)
+    key = cv2.waitKey(1) #wait 1ms the loop will start again and we will process the next frame
+    if key == 27: #esc key stops the process
+        break;
 
     elapsed_time = time.time() - starting_time
     fps=frame_id/elapsed_time
     cv2.putText(frame,"FPS:"+str(round(fps,2)),(10,50),font,2,(0,0,0),1)
-    
+    name=str(datetime.datetime.now())+".jpg"
+    cv2.imwrite(name,frame, [cv2.IMWRITE_JPEG_QUALITY, 100])
     cv2.imshow("Image",frame)
-    key = cv2.waitKey(1) #wait 1ms the loop will start again and we will process the next frame
-    
-    if key == 27: #esc key stops the process
-        break;
-    
-cap.release()    
+  
 cv2.destroyAllWindows()
