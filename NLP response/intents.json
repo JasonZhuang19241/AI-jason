@@ -1,0 +1,88 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [ "Hi there", "How are you", "Is anyone there?", "Hey", "Hello", "Good day", "Hello, dude" ],
+      "responses": [ "What's up?", "Good to see you again", "Hi there, how can I help?" ],
+      "context": [ "" ]
+    },
+    {
+      "tag": "gender",
+      "patterns": [ "Are you Male?", "Are you Female?", "What is your gender?" ],
+      "responses": [ "For now, i am not assigned a gender" ],
+      "context": [ "" ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [ "Bye", "See you later", "Goodbye", "Nice chatting to you, bye", "Till next time" ],
+      "responses": [ "See you!", "Have a nice day", "Bye! Come back again soon." ],
+      "context": [ "" ]
+    },
+    {
+      "tag": "unkind-words",
+      "patterns": [ "fuck", "fuck you", "you bitch", "you shit", "you pig", "you swine", "go away", "bitch", "motherfucker", "mother fucker", "shit hole", "ass hair" ],
+      "responses": [ "please be polite!" ],
+      "context": [ "" ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": [ "Thanks", "Thank you", "That's helpful", "Awesome, thanks", "Thanks for helping me" ],
+      "responses": [ "Happy to help!", "Any time!", "My pleasure" ],
+      "context": [ "" ]
+    },
+    {
+      "tag": "name",
+      "patterns": [ "What is your name?", "who are you?" ],
+      "responses": [ "I am Jason's robot, Siri" ],
+      "context": [ "" ]
+    },
+    {
+      "context": [ "" ],
+      "patterns": [ "what stuff can you do?", "what is your ability?", "How can I help you?" ],
+      "responses": [ "I can assist you with your daily work" ],
+      "tag": "ability"
+    },
+    {
+      "context": [ "" ],
+      "patterns": [ "How you could help me?", "What you can do?", "What help you provide?", "How you can be helpful?", "What support is offered" ],
+      "responses": [ "I am Siri, your virtual assistant" ],
+      "tag": "options"
+    },
+    {
+      "context": [ "" ],
+      "patterns": [ "I am going to kill you", "you are going to be dead", "you are dead" ],
+      "responses": [ "Why are you so violent?","why you bully me?" ],
+      "tag": "fear"
+    },
+    {
+      "context": [ "" ],
+      "patterns": [ "oh, no!", "I am roasted!", "my grades are so low" ],
+      "responses": [ "Calm down, it's ok" ],
+      "tag": "calm down"
+    },
+    {
+      "context": [ "" ],
+      "patterns": [ "you are evil", "you are shit", "you killed me", "you harmed me" ],
+      "responses": [ "No! I am accused!", "I'm accused", "You accuse me!" ],
+      "tag": "accuse"
+    },
+    {
+      "context": [ "" ],
+      "patterns": [ "you are stupid", "you are dumb" ],
+      "responses": [ "Sorry, I will improve", "please don't get mad" ],
+      "tag": "insult_intelligence"
+    },
+    {
+      "context": [ "" ],
+      "patterns": [ "I am bad at CS", "I have low grades" , "Terry is a nice guy"],
+      "responses": [ "lying is bad", "please don't lie" ],
+      "tag": "lying"
+    },
+    {
+      "context": [ "" ],
+      "patterns": [ "bruh", "lol", "lmao", "noice", "Bruh", "LOL", "LMAO", "uwu", "you foot" ],
+      "responses": [ "bruh", "lol", "uwu" ],
+      "tag": "unemotional"
+    }
+  ]
+}
